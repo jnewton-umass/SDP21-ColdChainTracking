@@ -1,11 +1,22 @@
 body {
   background-color: #ff7300;
-  border-block-color: #000000;
   text-align: center;
-  padding: 50px;
+  padding: 20px;
   font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
+h1 {
+  color: #000000;
+  font-size: 300%;
+  text-shadow: rebeccapurple;
+}
+p {
+  color: #000000;
+  font-size: 200%;
+}
 a {
-  color: #ff7300;
+  color: #5900ff;
+}
+img {
+  border: 5px purple;
+  padding: 10px;
 }
