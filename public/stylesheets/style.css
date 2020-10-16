@@ -1,6 +1,7 @@
 body {
   background-color: #ff7300;
   border-block-color: #000000;
+  text-align: center;
   padding: 50px;
   font: 20px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
