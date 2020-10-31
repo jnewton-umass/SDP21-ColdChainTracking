@@ -9,7 +9,7 @@ const APP_CODES = {
     MISSING_FIELD: 3
 }
 
-const ERROR_CODE = {
+const ERROR_CODES = {
     NOT_FOUND: 404,
     UNAUTHORIZED: 401,
     NO_DATA_FOUND: 403,

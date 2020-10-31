@@ -3,6 +3,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose')
+// connection string using mongoose:
+var uri = 'mongodb+srv://jnewton:<Qwerty123>@cctusers.t3lby.mongodb.net/<CCTUsers>?retryWrites=true&w=majority';
+
+mongoose.connect(uri);
+var db = mongoose.connection;
 
 //Access to various routers
 var indexRouter = require('./routes/index');
