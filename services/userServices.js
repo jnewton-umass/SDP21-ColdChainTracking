@@ -17,10 +17,10 @@ const responseObj = { user: {} }
  * @param {Object} req body
  */
 async function register(req) {
+    console.log(req.body);
     //User Object
-    const userObj = new userModel()
+    const userObj = new userModel();
     //Generate hash for Password and Pin
-    const password = await userObj.setPassword(req.body.password)
     //object to register the user
     const query = {
         userId: req.body.userId,
@@ -50,23 +50,8 @@ async function register(req) {
                 return result
             })
             .then(async result => {
-                //check if email already exists in the DB
-                const ifEmailExists = await userDao.checkUserIdExists(emailCheck, emailAttribute)
-                //If yes, throw error and don't register the user
-                if (ifEmailExists.length !== 0) {
-                    errorObj.code = CONSTANTS.APP_ERROR_CODE.EMAIL_EXISTS
-                    throw (errorObj)
-                }
-                return result
-            })
-            .then(async result => {
                 //Register the user
-                return userDao.register(query)
-            })
-            .then(async result => {
-                //generating the access and refresh tokens
-                const tokens = await tokenService.generateToken(result.userId)
-                resolve(tokens)
+                return resolve(userDao.register(query))
             })
             .catch(error => {
                 return reject(error)

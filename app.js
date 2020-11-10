@@ -5,15 +5,14 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose')
 // connection string using mongoose:
-var uri = 'mongodb+srv://jnewton:<Qwerty123>@cctusers.t3lby.mongodb.net/<CCTUsers>?retryWrites=true&w=majority';
-
-mongoose.connect(uri);
-var db = mongoose.connection;
-
+var uri = 'mongodb+srv://jnewton:gGtNgpMSUYgGpnNd@cctusers.t3lby.mongodb.net/CCTUsers?retryWrites=true&w=majority';
+mongoose.Promise = global.Promise
+mongoose.connect(uri, { useNewUrlParser: true});
 //Access to various routers
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var testRouter = require('./routes/test');
+var regRouter = require('./routes/register');
 var loginRouter = require('./routes/login');
 var welcomeRouter = require('./routes/welcome');
 
@@ -33,7 +32,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Various Routes can go here
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/users/register', usersRouter);
 app.use('/test', testRouter);
+app.use('/register', regRouter);
 app.use('/login', loginRouter);
 app.use('/welcome', welcomeRouter);
 

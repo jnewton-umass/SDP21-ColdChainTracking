@@ -1,14 +1,4 @@
-/**
- * @file userDAO.js
- * @author Sumit Janawlekar
- * @version 1.0
- * @createdDate 04/27/2020
- * @copyright Ahold USA 2020
- */
-//import
 const userModel = require("../models/userModel");
-//Commons
-const FILE_NAME = "userDAO.js";
 
 /**
  * @description function used to register a new user
@@ -35,12 +25,15 @@ async function register(query) {
  * @param {Object} attribute the projection condition
  */
 async function checkUserIdExists(query, attribute) {
+    console.log(query, attribute);
     return new Promise(async function (resolve, reject) {
         await userModel.find(query, attribute)
             .then(result => {
-                resolve(result)
+                console.log(result);
+                resolve(result);
             })
             .catch(error => {
+                console.log(error);
                 reject(error)
             })
     })
@@ -58,33 +51,6 @@ async function login(query, attribute) {
             query,
             attribute
         )
-            .then(result => {
-                resolve(result)
-            })
-            .catch(error => {
-                reject(error)
-            })
-    })
-}
-
-/**
- * @description function used to register a new user
- * @memberof user
- * @function login
- * @param {Object} query the query condition
- */
-async function pinLoginDao(query) {
-    const pinQuery = {
-        userId: query.userId
-    }
-    const attribute = {
-        _id: 0,
-        pin: 1,
-        userId: 1
-    }
-
-    return new Promise(async function (resolve, reject) {
-        await userModel.findOne(pinQuery, attribute)
             .then(result => {
                 resolve(result)
             })
@@ -142,7 +108,6 @@ function updateProfileDao(query, setQuery) {
 module.exports = {
     register,
     login,
-    pinLoginDao,
     checkUserIdExists,
     getUserDetails,
     updateProfileDao

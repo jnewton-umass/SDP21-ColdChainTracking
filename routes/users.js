@@ -6,15 +6,15 @@ var constants = require('../constants/constants')
 var userServices = require('../services/userServices');
 
 /* GET users listing. */
-router.post('/register', async function(req, res, next) {
+router.post('/register',async function(req, res, next) {
   await userServices.register(req)
     .then(result => {
       res.status(constants.ERROR_CODES.SUCCESS);
+      console.log(result);
       res.send(result);
     })
     .catch(error => {
-      res.status(constants.ERROR_CODES.FAILED)
+      res.status(constants.ERROR_CODES.FAILED);
     })
 });
-
 module.exports = router;
