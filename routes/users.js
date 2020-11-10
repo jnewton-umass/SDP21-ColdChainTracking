@@ -5,7 +5,6 @@ var service = require('../services/userServices');
 var constants = require('../constants/constants')
 var userServices = require('../services/userServices');
 
-/* GET users listing. */
 router.post('/register',async function(req, res, next) {
   await userServices.register(req)
     .then(result => {
