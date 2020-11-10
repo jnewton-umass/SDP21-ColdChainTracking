@@ -18,10 +18,6 @@ const responseObj = { user: {} }
  */
 async function register(req) {
     console.log(req.body);
-    //User Object
-    const userObj = new userModel();
-    //Generate hash for Password and Pin
-    //object to register the user
     const query = {
         userId: req.body.userId,
         password: req.body.password,
