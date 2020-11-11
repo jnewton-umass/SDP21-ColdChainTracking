@@ -3,13 +3,9 @@ extends layout
 block content
   h1 Welcome to the register page.
   form(action="/users/register", method="POST")
-    label
-      | Username: 
-      br
-      input(type="text" id="username" name="username" value="user")
-      br
-      | Password: 
-      br
+    label Username: 
+      input(type="text" id="userId" name="userId" value="user")
+    label Password: 
       input(type="text" id="password" name="password" value="pass")
-      br
-      input(input type="submit" value="Submit")
+    label 
+      input(type="submit" value="Submit")
