@@ -3,9 +3,9 @@ var router = express.Router();
 
 router.post('/', function(req, res, next) {
   res.render('welcome', {
-      login: req.body.username,
+      username: req.body.username,
       password: req.body.password,
-      
+      createdAt: req.body.createdAt
   });
 });
 

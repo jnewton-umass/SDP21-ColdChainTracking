@@ -35,9 +35,33 @@ async function register(req) {
                 return reject(error)
             })
     })
+};
+async function login(req) {
+    const query = {
+        userId: req.body.userId,
+        password: req.body.password,
+    }
+    const userIdCheck = {
+        userId: query.userId
+    }
+    const userIdAttribute = {
+        _id: 0,
+        userId: 1
+    }
+
+    return new Promise(async function (resolve, reject) {
+        return await userDao.checkUserIdExists(userIdCheck, userIdAttribute)
+            .then(async result => {
+                if (result.length !== 0) {
+                    resolve(userDao.login(query));
+                }
+            })
+            .catch(error => {
+                reject(error)
+            })
+    })
 }
-
-
 module.exports = {
-    register
+    register,
+    login
 }

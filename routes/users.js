@@ -16,4 +16,20 @@ router.post('/register',async function(req, res, next) {
       res.status(constants.ERROR_CODES.FAILED);
     })
 });
+
+router.post('/login',async function(req, res, next) {
+  var user = await userServices.login(req)
+    .then(result => {
+      res.status(constants.ERROR_CODES.SUCCESS);
+      res.render('welcome', {
+        username: result.body.userId,
+        password: result.body.password,
+        createdAt: result.body.createdAt
+    });
+    })
+    .catch(error => {
+      res.status(constants.ERROR_CODES.FAILED);
+    })
+});
+
 module.exports = router;

@@ -13,11 +13,9 @@ async function register(query) {
 }
 
 async function checkUserIdExists(query, attribute) {
-    console.log(query, attribute);
     return new Promise(async function (resolve, reject) {
         await userModel.find(query, attribute)
             .then(result => {
-                console.log(result);
                 resolve(result);
             })
             .catch(error => {
@@ -29,23 +27,9 @@ async function checkUserIdExists(query, attribute) {
 
 async function login(query, attribute) {
     return new Promise(async function (resolve, reject) {
-        await userModel.findOne(
-            query,
-            attribute
-        )
+        await userModel.findOne(query,attribute)  
             .then(result => {
-                resolve(result)
-            })
-            .catch(error => {
-                reject(error)
-            })
-    })
-}
-
-function getUserDetails(query, attribute) {
-    return new Promise(async function (resolve, reject) {
-        await userModel.findOne(query, attribute)
-            .then(async result => {
+                console.log(result)
                 resolve(result)
             })
             .catch(error => {
@@ -77,6 +61,5 @@ module.exports = {
     register,
     login,
     checkUserIdExists,
-    getUserDetails,
     updateProfileDao
 }
