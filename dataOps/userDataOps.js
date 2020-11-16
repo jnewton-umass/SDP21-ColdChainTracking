@@ -38,28 +38,9 @@ async function login(query, attribute) {
     })
 }
 
-function updateProfileDao(query, setQuery) {
-    return new Promise(async function (resolve, reject) {
-        // this operation will find the user profile and update it based on setQuery object
-        await userModel.update(
-            // Find Operation: will find the user profile based on the query passed
-            query,
-            // Update operation: will update the user profile based on the setQuery object
-            {
-                $set: setQuery
-            })
-            .then(result => {
-                resolve(result);
-            })
-            .catch(error => {
-                reject(error);
-            })
-    })
-}
 
 module.exports = {
     register,
     login,
-    checkUserIdExists,
-    updateProfileDao
+    checkUserIdExists
 }

@@ -9,6 +9,8 @@ async function registerStatus(req) {
         statusId: req.body.statusId,
         temperature: req.body.temperature,
         light: req.body.light,
+        longitude: req.body.longitude,
+        latitude: req.body.latitude,
         updatedAt:  new Date()
     }
     const statusIdObj  = {
@@ -41,6 +43,8 @@ async function updateStatus(req) {
         statusId: req.body.statusId,
         temperature: req.body.temperature,
         light: req.body.light,
+        longitude: req.body.longitude,
+        latitude: req.body.latitude,
         updatedAt:  new Date()
     }
     const statusIdObj  = {

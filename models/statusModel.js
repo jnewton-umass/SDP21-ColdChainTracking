@@ -5,6 +5,8 @@ const statusSchema = new Schema ({
     statusId: {type: String},
     temperature: {type: Number},    
     light: {type: Number},
+    longitude: {type: Number},
+    latitude: {type: Number},
     updatedAt: {type: Date}
 })
 
