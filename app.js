@@ -40,6 +40,8 @@ app.use('/register', regRouter);
 app.use('/login', loginRouter);
 app.use('/welcome', welcomeRouter);
 app.use('/status', statusRouter);
+app.use('/status/register', statusRouter);
+app.use('/status/update', statusRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
