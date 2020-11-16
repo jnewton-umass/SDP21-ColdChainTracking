@@ -10,25 +10,30 @@ router.post('/register',async function(req, res, next) {
     .then(result => {
       res.status(constants.ERROR_CODES.SUCCESS);
       console.log(result);
-      res.send(result);
+      res.render('welcome', result);
     })
     .catch(error => {
       res.status(constants.ERROR_CODES.FAILED);
+      res.send(error);
     })
 });
 
 router.post('/login',async function(req, res, next) {
   var user = await userServices.login(req)
     .then(result => {
-      res.status(constants.ERROR_CODES.SUCCESS);
-      res.render('welcome', {
-        username: result.body.userId,
-        password: result.body.password,
-        createdAt: result.body.createdAt
-    });
+      if (result == null) {
+        theError = "invalid username or password";
+        res.status(constants.ERROR_CODES.FAILED);
+        res.render('error', theError);
+      }
+      else {
+        res.status(constants.ERROR_CODES.SUCCESS);
+        res.render('welcome', result);
+      }
     })
     .catch(error => {
       res.status(constants.ERROR_CODES.FAILED);
+      res.render('error');
     })
 });
 

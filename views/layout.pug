@@ -2,7 +2,9 @@ doctype html
 html
     head
         title=title
-        link(rel='stylesheet', href='stylesheets/style.css')
+        link(rel='stylesheet', href='../stylesheets/style.css')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+
     body
         h1 Cold Chain Tracking
         .sidenav
@@ -12,3 +14,4 @@ html
             a(href='/login') Login
             a(href='/error') Error
         block content
+    footer= authors

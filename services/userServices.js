@@ -53,11 +53,22 @@ async function login(req) {
         return await userDao.checkUserIdExists(userIdCheck, userIdAttribute)
             .then(async result => {
                 if (result.length !== 0) {
-                    resolve(userDao.login(query));
+                    return await userDao.login(query)
+                    .then(async result => {
+                        if (result != null) {
+                            resolve(result);
+                        }
+                        else {
+                            reject(result);
+                        }
+                    })
+                    .catch(error => {
+                        reject(error);
+                    })
                 }
             })
             .catch(error => {
-                reject(error)
+                reject(error);
             })
     })
 }
