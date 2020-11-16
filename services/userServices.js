@@ -1,7 +1,6 @@
 const FILE_NAME = "userService.js";
 const CONSTANTS = require("../constants/constants");
 const userDao = require('../dataOps/userDataOps')
-const userModel = require("../models/userModel")
 
 const errorObj = {}
 

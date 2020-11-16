@@ -4,9 +4,9 @@ const Schema = mongoose.Schema;
 const statusSchema = new Schema ({
     statusId: {type: String},
     temperature: {type: Number},    
-    light: {type: Number},
-    longitude: {type: Number},
+    light: {type: Boolean},
     latitude: {type: Number},
+    longitude: {type: Number},
     updatedAt: {type: Date}
 })
 
