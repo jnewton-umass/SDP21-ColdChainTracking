@@ -1,6 +1,5 @@
 const CONSTANTS = require("../constants/constants");
 const statusDao = require('../dataOps/statusDataOps')
-const statusModel = require("../models/statusModel")
 
 const errorObj = {}
 
@@ -16,13 +15,9 @@ async function registerStatus(req) {
     const statusIdObj  = {
         statusId: req.body.statusId
     }
-    const statusIdAttribute = {
-        _id: 0,
-        userId: 1
-    }
 
     return new Promise(async function (resolve, reject) {
-        await statusDao.checkStatusIdExists(statusIdObj, statusIdAttribute)
+        await statusDao.checkStatusIdExists(statusIdObj)
             .then(async result => {
                 if (result.length !== 0) {
                     errorObj.code = CONSTANTS.ERROR_CODES.BAD_REQUEST
@@ -50,13 +45,9 @@ async function updateStatus(req) {
     const statusIdObj  = {
         statusId: req.body.statusId
     }
-    const statusIdAttribute = {
-        _id: 0,
-        userId: 1
-    }
 
     return new Promise(async function (resolve, reject) {
-        await statusDao.checkStatusIdExists(statusIdObj, statusIdAttribute)
+        await statusDao.checkStatusIdExists(statusIdObj)
             .then(async result => {
                 if (result.length !== 0) {
                     return resolve(statusDao.update(query))

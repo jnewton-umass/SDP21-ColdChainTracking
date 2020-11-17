@@ -10,5 +10,5 @@ const statusSchema = new Schema ({
     updatedAt: {type: Date}
 })
 
-statusSchema.index({"statusId": 1 })
+statusSchema.index({"__id": 1 })
 module.exports = mongoose.model('status', statusSchema)

@@ -22,10 +22,9 @@ async function update(query) {
             })
     })
 }
-async function checkStatusIdExists(query, attribute) {
-    console.log(query, attribute);
+async function checkStatusIdExists(query) {
     return new Promise(async function (resolve, reject) {
-        await statusModel.find(query, attribute)
+        await statusModel.find(query)
             .then(result => {
                 console.log(result);
                 resolve(result);
