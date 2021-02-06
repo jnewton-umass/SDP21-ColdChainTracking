@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<title>Cold Chain Tracking</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="style.css">
+<script src=""></script>
+<body>
+<ul class="topnav">
+  <li><a class="active" href="index.html">Home</a></li>
+  <li><a href="diagrams.html">Diagrams</a></li>
+  <li><a href="pdr.html">PDR Slides</a></li>
+  <li><a href="mdr.html">MDR Slides</a></li>
+  <li><a href="videos.html">Videos</a></li>
+</ul>
+<div class="grid-container">
+  <div class="header">
+    <h1>Cold Chain Tracking</h1>
+    <h3>Team 25:</h3>
+    <h4>Cam Harvey, Calvin Lee, and John Newton</h4>
+    <img src="simpleDiagram.png" alt="" style="width:800px;height:200px;">
+  </div>
+  
+  <div class="left" style="background-color:#d1edff; font-size:150%;">
+    <h1>Problem Statement:</h1>
+    <p>Our original Problem Statement portrays the need to monitor temperature and location during transit for accountability purposes. However, Current solutions are not waterproof, expensive, or single use only.</p>
+
+  </div>
+  <div class="middle" style="background-color:#d1edff; font-size:150%; text-align:left;">
+    <h1 style="text-align:center;">Solution:</h1>
+    <ul>
+        <li>Single gateway device for truck with cellular and gps communication</li>
+        <li>Internal temperature sensors all report to gateway for transmission of temperature and location data to the web server</li>
+        <li>Internal light sensor to help explain discontinuity</li>
+        <li>QR codes on each product detailing origin, destination, product number</li>
+        <li>QR code on gateway/truck to link measurements</li>
+        <li>Mobile scanner application to store and upload to server</li>
+        <li>Shipments will be scanned during loading and unloading</li>
+        <li>QR info will correlate records with authorized parties</li>
+    </ul>
+  </div>  
+  <div class="right" style="background-color:#d1edff; font-size:150%; text-align:left;">
+    <h1 style="text-align:center;">System Specs:</h1>
+    <ul>
+        <li>Power: Must run off of 12V lead acid source (truck battery)</li>
+        <li>Must be able to provide real time tracking to user with the following parameters:</li>
+        <ul>
+            <li>Temperature: within 1 degree Fahrenheit</li>
+            <li>Location: within 25 ft</li>
+            <li>Light: Above or below a set threshold (daylight/darkness)</li>
+            <li>Time: Record the correct time in Eastern Standard Time within 1 sec</li>
+            <li>Updated every 15 minutes with connection</li>
+        </ul>
+        <li>Cost: Less than $284 for materials for final prototype</li>
+        <li>Size: Gateway no larger than 6”x6”x3”</li>
+    </ul>
+  </div>
+  <div class="footer">
+    <h3>SDP 2021<br>University of Massachusetts Amherst</h3>
+  </div>
+</body>
+</html>
