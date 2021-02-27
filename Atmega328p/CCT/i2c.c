@@ -3,8 +3,8 @@
 #include <Atmega328p/include/avr/interrupt.h>
 #include <Atmega328p/include/util/delay.h>
 #include <Atmega328p/include/string.h>
-#define BUAD 9600
-#define BRC ((F_CPU/16/BUAD)-1)
+#define BAUD 115200
+#define BRC ((F_CPU/16/BAUD)-1)
 volatile uint8_t len, i=0;
 volatile char str_tx[40];
 
