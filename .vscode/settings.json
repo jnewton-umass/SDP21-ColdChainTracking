@@ -1,5 +1,16 @@
 {
     "files.associations": {
-        "io.h": "c"
+        "io.h": "c",
+        "interrupt.h": "c",
+        "adafruit_fona.h": "c",
+        "adafruit_sensor.h": "c",
+        "ds3231.h": "c",
+        "fonaplatform.h": "c",
+        "fonaplatstd.h": "c",
+        "sparkfuntmp102.h": "c",
+        "twi.h": "c",
+        "math.h": "c",
+        "softwareserial.h": "c",
+        "iom328p.h": "c"
     }
 }
