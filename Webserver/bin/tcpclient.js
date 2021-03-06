@@ -4,7 +4,7 @@ const readline = require('readline').createInterface({
 	output: process.stdout
   });
 var client = new net.Socket();
-client.connect(8081, 'localhost', function() {
+client.connect(8081, '', function() {
 	console.log('Connected');
 	client.write('Hello, server! Love, Client.');
 	readline.question('Response: ', res => {
@@ -20,7 +20,9 @@ client.on('data', function(data) {
 		readline.close();
 	});
 });
-
+client.on('error', function(error) {
+	console.log(error);
+});
 client.on('close', function() {
 	console.log('Connection closed');
 });
