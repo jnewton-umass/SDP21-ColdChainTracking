@@ -18,7 +18,7 @@ var net = require('net');
 
 var portHTTP = normalizePort(process.env.PORT || '8080');
 app.set('port', portHTTP);
-var portTCP = normalizePort(process.env.PORT || '8081');
+var portTCP = normalizePort(process.env.PORT || '8088');
 /**
  * Create HTTP server and TCP server
  */
