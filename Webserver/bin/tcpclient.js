@@ -4,7 +4,7 @@ const readline = require('readline').createInterface({
 	output: process.stdout
   });
 var client = new net.Socket();
-client.connect(8081, '', function() {
+client.connect(8081, 'possible-point-294420.ue.r.appspot.com', function() {
 	console.log('Connected');
 	client.write('Hello, server! Love, Client.');
 	readline.question('Response: ', res => {
