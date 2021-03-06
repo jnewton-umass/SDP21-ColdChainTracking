@@ -16,9 +16,9 @@ var net = require('net');
  * Get port from environment and store in Express.
  */
 
-var portHTTP = normalizePort(process.env.PORT || '8080');
+var portHTTP = normalizePort('8080');
 app.set('port', portHTTP);
-var portTCP = normalizePort(process.env.PORT || '8081');
+var portTCP = normalizePort('8081');
 /**
  * Create HTTP server and TCP server
  */
