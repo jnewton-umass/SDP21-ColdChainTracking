@@ -13,7 +13,6 @@ client.connect(8081, '35.190.148.56', function() {
 });
 client.on('data', function(data) {
 	console.log('Received: ' + data);
-	client.sendEndMessage();
 });
 client.on('error', function(error) {
 	console.log(error);
