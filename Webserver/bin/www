@@ -49,7 +49,7 @@ serverTCP.on('connection', function(socket) {
         .catch(error =>  {
           socket.write(error);
         })
-    })}
+    })
   });
   socket.on('end', function() {
     console.log('Socket ended.');
