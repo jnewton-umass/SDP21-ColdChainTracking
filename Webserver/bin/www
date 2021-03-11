@@ -37,7 +37,7 @@ serverTCP.on('connection', function(socket) {
     socket.sendMessage({res:"Success"});
   });
   socket.on('message', function(data) {
-    console.log('Data Received: \t' + data)
+    console.log('Data Received: \t' + data.toString())
     statusServices.registerStatus(data)
     .then(result => {
       socket.sendMessage({res:"Successful Status Register"});
