@@ -4,6 +4,7 @@ const statusDao = require('../dataOps/statusDataOps')
 const errorObj = {}
 
 async function registerStatus(req) {
+    req = JSON.parse(req);
     const query = {
         statusId: req.body.statusId,
         temperature: req.body.temperature,
@@ -34,6 +35,7 @@ async function registerStatus(req) {
     })
 }
 async function updateStatus(req) {
+    req = JSON.parse(req);
     const query = {
         statusId: req.body.statusId,
         temperature: req.body.temperature,

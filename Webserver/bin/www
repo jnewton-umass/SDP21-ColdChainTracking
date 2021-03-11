@@ -35,7 +35,7 @@ serverTCP.on('connection', function(socket) {
     socket.write("Success");
   });
   socket.on('data', function(data) {
-    console.log('Data Received: \t' + JSON.parse(data))
+    console.log('Data Received: \t' + data)
     statusServices.registerStatus(JSON.parse(data))
     .then(result => {
       socket.write("Successful Status Register");
