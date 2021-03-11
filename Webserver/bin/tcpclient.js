@@ -1,5 +1,6 @@
 var net = require('net');
-var client = new net.Socket();
+var JsonSocket = require('json-socket')
+var client = new JsonSocket(new net.Socket())
 client.connect(8081, '35.190.148.56', function() {
 	console.log('Connected');
 	client.write(JSON.stringify({

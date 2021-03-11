@@ -8,6 +8,7 @@ var app = require('../app');
 var debug = require('debug')('sdp21-coldchaintracking:server');
 var http = require('http');
 var net = require('net');
+var JsonSocket = require('json-socket');
 /**
  * Get port from environment and store in Express.
  */
@@ -30,6 +31,7 @@ serverHTTP.on('error', onError);
 serverHTTP.on('listening', onListening);
 serverTCP.listen(portTCP);
 serverTCP.on('connection', function(socket) {
+  socket = new JsonSocket(socket);
   socket.on('connect', function() {
     console.log('A new connection has been established.');
     socket.write("Success");
