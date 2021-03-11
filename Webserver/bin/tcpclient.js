@@ -6,6 +6,7 @@ client.connect(8081, '35.190.148.56', function() {
 });
 client.on('data', function(data) {
 	console.log('Received: ' + data);
+	client.end();
 });
 client.on('error', function(error) {
 	console.log(error);

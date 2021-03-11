@@ -38,10 +38,17 @@ serverTCP.on('connection', function(socket) {
     console.log('Data Received: \t' + data)
     statusServices.registerStatus(data)
     .then(result => {
-      socket.write("Successful Status Update");
+      socket.write("Successful Status Register");
     })
     .catch(error => {
-      socket.write("Failed Status Update")
+      socket.write("Failed Status Register")
+      statusServices.updateStatus(data)
+        .then(result => {
+          socket.write("Successful Status Update");
+        })
+        .catch(error =>  {
+          socket.write("Failed Status Update");
+        })
     })
   });
   socket.on('end', function() {
