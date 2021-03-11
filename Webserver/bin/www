@@ -34,22 +34,22 @@ serverTCP.on('connection', function(socket) {
   socket = new JsonSocket(socket);
   socket.on('connect', function() {
     console.log('A new connection has been established.');
-    socket.sendMessage("Success");
+    socket.sendMessage({res:"Success"});
   });
   socket.on('data', function(data) {
     console.log('Data Received: \t' + data)
     statusServices.registerStatus(data)
     .then(result => {
-      socket.sendMessage("Successful Status Register");
+      socket.sendMessage({res:"Successful Status Register"});
     })
     .catch(error => {
-      socket.sendMessage(error.toString());
+      socket.sendMessage({err:error.toString()});
       statusServices.updateStatus(data)
         .then(result => {
-          socket.sendMessage("Successful Status Update");
+          socket.sendMessage({res:"Successful Status Update"});
         })
         .catch(error =>  {
-          socket.sendMessage(error.toString());
+          socket.sendMessage({err:error.toString()});
         })
     })
   });
