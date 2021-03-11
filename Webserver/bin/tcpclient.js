@@ -1,17 +1,11 @@
 var net = require('net');
-const readline = require('readline').createInterface({
-	input: process.stdin,
-	output: process.stdout
-  });
 var client = new net.Socket();
 client.connect(8081, '35.190.148.56', function() {
 	console.log('Connected');
-	client.write('Hello, server! Love, Client.');
+	client.write('{"statusId": "demoStatusyes", "temperature": 20, "light": false, "latitude": 42.361784, "longitude": -72.487846 }');
 });
-
 client.on('data', function(data) {
 	console.log('Received: ' + data);
-	client.write('OK\n');
 });
 client.on('error', function(error) {
 	console.log(error);

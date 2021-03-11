@@ -1,13 +1,9 @@
 #!/usr/bin/env node
-
 /**
  * Module dependencies.
  */
-
-const readline = require('readline').createInterface({
-	input: process.stdin,
-	output: process.stdout
-  });
+var constants = require('../constants/constants')
+var statusServices = require('../services/statusServices');
 var app = require('../app');
 var debug = require('debug')('sdp21-coldchaintracking:server');
 var http = require('http');
@@ -36,17 +32,17 @@ serverTCP.listen(portTCP);
 serverTCP.on('connection', function(socket) {
   socket.on('connect', function() {
     console.log('A new connection has been established.');
-    readline.question('Response: ', res => {
-      socket.write(res);
-      readline.close();
-    });
+    socket.write("Success");
   });
   socket.on('data', function(data) {
     console.log('Data Received: \t' + data)
-    readline.question('Response: ', res => {
-      socket.write(res);
-      readline.close();
-    });
+    await statusServices.registerStatus(data)
+    .then(result => {
+      socket.write("Successful Status Update");
+    })
+    .catch(error => {
+      socket.write("Failed Status Update")
+    })
   });
   socket.on('end', function() {
     console.log('Socket ended.');
