@@ -10,7 +10,7 @@ const mes = {
 }
 client.connect(8081, '35.190.148.56', function() {
 	console.log('Connected');
-	client.sendMessage(JSON.stringify(mes));
+	client.sendMessage(mes);
 });
 client.on('data', function(data) {
 	console.log('Received: ' + data);

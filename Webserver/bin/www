@@ -47,7 +47,7 @@ serverTCP.on('connection', function(socket) {
         socket.write("Successful Status Update");
       })
       .catch(error =>  {
-        socket.write({err:error.toString()});
+        socket.write(error.toString());
       })
     })
   });
