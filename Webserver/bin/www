@@ -36,20 +36,20 @@ serverTCP.on('connection', function(socket) {
   socket.sendMessage({res:"Success"});
   socket.on('message', function(message) {
     console.log('Data Received: \t' + message);
-    // statusServices.registerStatus(data)
-    // .then(result => {
-    //   socket.sendMessage({res:"Successful Status Register"});
-    // })
-    // .catch(error => {
-    //   socket.sendMessage({err:error.toString()});
-    //   statusServices.updateStatus(data)
-    //     .then(result => {
-    //       socket.sendMessage({res:"Successful Status Update"});
-    //     })
-    //     .catch(error =>  {
-    //       socket.sendMessage({err:error.toString()});
-    //     })
-    // })
+    statusServices.registerStatus(data)
+    .then(result => {
+      socket.sendMessage({res:"Successful Status Register"});
+    })
+    .catch(error => {
+      socket.sendMessage({err:error.toString()});
+      statusServices.updateStatus(data)
+      .then(result => {
+        socket.sendMessage({res:"Successful Status Update"});
+      })
+      .catch(error =>  {
+        socket.sendMessage({err:error.toString()});
+      })
+    })
   });
   socket.on('end', function() {
     console.log('Socket ended.');
