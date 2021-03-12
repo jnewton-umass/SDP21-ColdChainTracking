@@ -34,8 +34,8 @@ serverTCP.on('connection', function(socket) {
   socket = new JsonSocket(socket);
   console.log('A new connection has been established.');
   socket.sendMessage({res:"Success"});
-  socket.on('message', function(data) {
-    console.log('Data Received: \t' + data.toString());
+  socket.on('message', function(message) {
+    console.log('Data Received: \t' + message);
     // statusServices.registerStatus(data)
     // .then(result => {
     //   socket.sendMessage({res:"Successful Status Register"});
