@@ -34,15 +34,15 @@ serverTCP.on('connection', function(socket) {
   console.log('A new connection has been established.');
   socket.write("Success");
   socket.on('data', function(data) {
-    data = data.substring(4);
-    console.log('Data Received: \t' + data);
-    statusServices.registerStatus(JSON.parse(data))
+    var json = data.substring(4);
+    console.log('Data Received: \t' + json);
+    statusServices.registerStatus(JSON.parse(json))
     .then(result => {
       socket.sendMessage({res:"Successful Status Register"});
     })
     .catch(error => {
       socket.sendMessage({err:error.toString()});
-      statusServices.updateStatus(JSON.parse(data))
+      statusServices.updateStatus(JSON.parse(json))
       .then(result => {
         socket.sendMessage({res:"Successful Status Update"});
       })
