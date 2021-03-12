@@ -34,7 +34,7 @@ serverTCP.on('connection', function(socket) {
   console.log('A new connection has been established.');
   socket.write("Success");
   socket.on('data', function(data) {
-    var json = data.substring(4);
+    var json = data.toString().substring(4);
     console.log('Data Received: \t' + json);
     statusServices.registerStatus(JSON.parse(json))
     .then(result => {
