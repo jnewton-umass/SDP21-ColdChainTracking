@@ -63,9 +63,9 @@ int main(void)
 
 	sw("master started, wait 5 sec\n\r");
 	_delay_ms(5000);
-	TWI_Init();
+	I2C_Init();
 	
-	TWI_Start();
+	startI2C();
 	sw("twi started \n\r");
 	TWI_Write_Addr(0x21);//WRITE SLA+R
 	sw("SLA+R has been transmitted; ACK has been received\n\r");

@@ -11,6 +11,7 @@
         "twi.h": "c",
         "math.h": "c",
         "softwareserial.h": "c",
-        "iom328p.h": "c"
+        "iom328p.h": "c",
+        "iom328.h": "c"
     }
 }

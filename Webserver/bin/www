@@ -32,10 +32,8 @@ serverHTTP.on('listening', onListening);
 serverTCP.listen(portTCP);
 serverTCP.on('connection', function(socket) {
   socket = new JsonSocket(socket);
-  socket.on('connect', function() {
-    console.log('A new connection has been established.');
-    socket.sendMessage({res:"Success"});
-  });
+  console.log('A new connection has been established.');
+  socket.sendMessage({res:"Success"});
   socket.on('message', function(data) {
     console.log('Data Received: \t' + data.toString())
     statusServices.registerStatus(data)
