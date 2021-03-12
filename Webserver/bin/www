@@ -36,13 +36,13 @@ serverTCP.on('connection', function(socket) {
   socket.sendMessage({res:"Success"});
   socket.on('message', function(message) {
     console.log('Data Received: \t' + message);
-    statusServices.registerStatus(data)
+    statusServices.registerStatus(message)
     .then(result => {
       socket.sendMessage({res:"Successful Status Register"});
     })
     .catch(error => {
       socket.sendMessage({err:error.toString()});
-      statusServices.updateStatus(data)
+      statusServices.updateStatus(message)
       .then(result => {
         socket.sendMessage({res:"Successful Status Update"});
       })
