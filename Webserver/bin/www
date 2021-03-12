@@ -69,7 +69,6 @@ serverTCP.on('listening', function() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  console.log(addr);
   console.log('Listening for a TCP connection on ' + bind);
   debug('Listening on ' + bind);
 });
