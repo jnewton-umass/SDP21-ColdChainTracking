@@ -38,16 +38,16 @@ serverTCP.on('connection', function(socket) {
     console.log('Data Received: \t' + json);
     statusServices.registerStatus(JSON.parse(json))
     .then(result => {
-      socket.sendMessage({res:"Successful Status Register"});
+      socket.write({res:"Successful Status Register"});
     })
     .catch(error => {
-      socket.sendMessage({err:error.toString()});
+      socket.write({err:error.toString()});
       statusServices.updateStatus(JSON.parse(json))
       .then(result => {
-        socket.sendMessage({res:"Successful Status Update"});
+        socket.write({res:"Successful Status Update"});
       })
       .catch(error =>  {
-        socket.sendMessage({err:error.toString()});
+        socket.write({err:error.toString()});
       })
     })
   });
