@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const statusSchema = new Schema ({
     statusId: {type: String},
-    temperature: {type: Number},    
+    temperature1: {type: Number},    
+    temperature2: {type: Number},
     light: {type: Boolean},
     latitude: {type: Number},
     longitude: {type: Number},

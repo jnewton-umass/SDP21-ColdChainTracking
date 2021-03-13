@@ -8,7 +8,6 @@ var app = require('../app');
 var debug = require('debug')('sdp21-coldchaintracking:server');
 var http = require('http');
 var net = require('net');
-var JsonSocket = require('json-socket');
 /**
  * Get port from environment and store in Express.
  */
@@ -33,21 +32,21 @@ serverTCP.listen(portTCP);
 serverTCP.on('connection', function(socket) {
   console.log('A new connection has been established.');
   socket.write("Success");
-  socket.on('data', function(data) {
-    console.log('Data Received: \t' + data);
-    statusServices.registerStatus(data)
-    .then(result => {
-      socket.write("Successful Status Register");
-    })
-    .catch(error => {
-      socket.write(error.toString());
-      statusServices.updateStatus(data)
-      .then(result => {
-        socket.write("Successful Status Update");
-      })
-      .catch(error =>  {
-        socket.write(error.toString());
-      })
+  socket.on('data', async function(data) {
+      var newData = data.split(" ", 6);
+      await statusServices.registerStatus(newData[0], parseInt(newData[1]), parseInt(newData[2]), parse(newData[3]), parseFloat(newData[4]), parseFloat(newData[5]))
+        .then(result => {
+          socket.write(result.toString());
+        })
+        .catch(error => {
+          await statusServices.updateStatus(newData[0], parseInt(newData[1]), parseInt(newData[2]), parse(newData[3]), parseFloat(newData[4]), parseFloat(newData[5]))
+            .then(result => {
+              socket.write(result.toString());
+            })
+            .catch(error => {
+              socket.write(error.toString());
+            })
+        })
     })
   });
   socket.on('end', function() {

@@ -3,17 +3,18 @@ const statusDao = require('../dataOps/statusDataOps')
 
 const errorObj = {}
 
-async function registerStatus(req) {
+async function registerStatus(id, temp1, temp2, light, lat, lon) {
     const query = {
-        statusId: req.body.statusId,
-        temperature: req.body.temperature,
-        light: req.body.light,
-        latitude: req.body.latitude,
-        longitude: req.body.longitude,
+        statusId: id,
+        temperature1: temp1,
+        temperature2: temp2,
+        light: light,
+        latitude: lat,
+        longitude: lon,
         updatedAt:  new Date()
     }
     const statusIdObj  = {
-        statusId: req.body.statusId
+        statusId: id
     }
 
     return new Promise(async function (resolve, reject) {
@@ -35,15 +36,16 @@ async function registerStatus(req) {
 }
 async function updateStatus(req) {
     const query = {
-        statusId: req.body.statusId,
-        temperature: req.body.temperature,
-        light: req.body.light,
-        latitude: req.body.latitude,
-        longitude: req.body.longitude,
+        statusId: id,
+        temperature1: temp1,
+        temperature2: temp2,
+        light: light,
+        latitude: lat,
+        longitude: lon,
         updatedAt:  new Date()
     }
     const statusIdObj  = {
-        statusId: req.body.statusId
+        statusId: id
     }
 
     return new Promise(async function (resolve, reject) {
