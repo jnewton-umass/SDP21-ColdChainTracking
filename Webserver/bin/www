@@ -47,7 +47,6 @@ serverTCP.on('connection', function(socket) {
               socket.write(error.toString());
             })
         })
-    })
   });
   socket.on('end', function() {
     console.log('Socket ended.');
