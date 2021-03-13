@@ -33,20 +33,21 @@ serverTCP.on('connection', function(socket) {
   console.log('A new connection has been established.');
   socket.write("Success");
   socket.on('data', async function(data) {
-      var newData = data.split(" ", 6);
-      await statusServices.registerStatus(newData[0], parseInt(newData[1]), parseInt(newData[2]), parse(newData[3]), parseFloat(newData[4]), parseFloat(newData[5]))
-        .then(result => {
-          socket.write(result.toString());
-        })
-        .catch(error => {
-          statusServices.updateStatus(newData[0], parseInt(newData[1]), parseInt(newData[2]), parse(newData[3]), parseFloat(newData[4]), parseFloat(newData[5]))
-            .then(result => {
-              socket.write(result.toString());
-            })
-            .catch(error => {
-              socket.write(error.toString());
-            })
-        })
+    data = data.toString();
+    var newData = data.split(" ", 6);
+    await statusServices.registerStatus(newData[0], parseInt(newData[1]), parseInt(newData[2]), parse(newData[3]), parseFloat(newData[4]), parseFloat(newData[5]))
+      .then(result => {
+        socket.write(result.toString());
+      })
+      .catch(error => {
+        statusServices.updateStatus(newData[0], parseInt(newData[1]), parseInt(newData[2]), parse(newData[3]), parseFloat(newData[4]), parseFloat(newData[5]))
+          .then(result => {
+            socket.write(result.toString());
+          })
+          .catch(error => {
+            socket.write(error.toString());
+          })
+      })
   });
   socket.on('end', function() {
     console.log('Socket ended.');
