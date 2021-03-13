@@ -2,7 +2,6 @@
 /**
  * Module dependencies.
  */
-var constants = require('../constants/constants')
 var statusServices = require('../services/statusServices');
 var app = require('../app');
 var debug = require('debug')('sdp21-coldchaintracking:server');
