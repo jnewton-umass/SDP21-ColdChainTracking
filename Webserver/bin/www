@@ -40,6 +40,7 @@ serverTCP.on('connection', function(socket) {
         socket.write(result.toString());
       })
       .catch(error => {
+        console.log(error.toString());
         statusServices.updateStatus(newData[0], parseInt(newData[1]), parseInt(newData[2]), parseInt(newData[3]), parseFloat(newData[4]), parseFloat(newData[5]))
           .then(result => {
             socket.write(result.toString());
