@@ -31,7 +31,6 @@ serverHTTP.on('listening', onListening);
 serverTCP.listen(portTCP);
 serverTCP.on('connection', function(socket) {
   console.log('A new connection has been established.');
-  socket.write("Success");
   socket.on('data', async function(data) {
     data = data.toString();
     var newData = data.split(" ", 6);
