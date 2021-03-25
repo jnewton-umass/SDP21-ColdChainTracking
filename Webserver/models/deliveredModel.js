@@ -7,5 +7,5 @@ const gatewayOutSchema = new Schema ({
     isDelivered: {type: Boolean}
 })
 
-statusSchema.index({"__id": 1 })
+gatewayOutSchema.index({"__id": 1 })
 module.exports = mongoose.model('delivered', gatewayOutSchema, 'delivered')

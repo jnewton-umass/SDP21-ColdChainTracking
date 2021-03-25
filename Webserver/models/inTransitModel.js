@@ -7,5 +7,5 @@ const gatewayInSchema = new Schema ({
     isDelivered: {type: Boolean}
 })
 
-statusSchema.index({"__id": 1 })
+gatewayInSchema.index({"__id": 1 })
 module.exports = mongoose.model('inTransit', gatewayInSchema, 'inTransit')
