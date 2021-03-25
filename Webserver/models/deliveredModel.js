@@ -3,8 +3,7 @@ const Schema = mongoose.Schema;
 
 const gatewayOutSchema = new Schema ({
     statusId: {type: String},
-    products: {type: Object},
-    isDelivered: {type: Boolean}
+    products: {type: Object}
 })
 
 gatewayOutSchema.index({"__id": 1 })
