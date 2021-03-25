@@ -12,4 +12,4 @@ const statusSchema = new Schema ({
 })
 
 statusSchema.index({"__id": 1 })
-module.exports = mongoose.model('status', statusSchema)
+module.exports = mongoose.model('status', statusSchema, 'statusUpdates')

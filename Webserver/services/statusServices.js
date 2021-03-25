@@ -21,8 +21,7 @@ async function registerStatus(id, temp1, temp2, light, lat, lon) {
         await statusDao.checkStatusIdExists(statusIdObj)
             .then(async result => {
                 if (result.length !== 0) {
-                    errorObj.code = CONSTANTS.ERROR_CODES.BAD_REQUEST
-                    throw (errorObj)
+                    return  resolve(statusDao.update(query))
                 }
                 return result
             })
@@ -34,7 +33,7 @@ async function registerStatus(id, temp1, temp2, light, lat, lon) {
             })
     })
 }
-async function updateStatus(req) {
+async function updateStatus(id, temp1, temp2, light, lat, lon) {
     const query = {
         statusId: id,
         temperature1: temp1,
@@ -53,6 +52,9 @@ async function updateStatus(req) {
             .then(async result => {
                 if (result.length !== 0) {
                     return resolve(statusDao.update(query))
+                }
+                else {
+                    return resolve(statusDao.register(query))
                 }
             })
             .catch(error => {

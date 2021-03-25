@@ -17,7 +17,8 @@ var regRouter = require('./routes/register');
 var loginRouter = require('./routes/login');
 var welcomeRouter = require('./routes/welcome');
 var statusRouter = require('./routes/status');
-
+var plotRouter = require('./routes/plot');
+var gatewayRouter = require('./routes/gateway');
 var app = express();
 
 // view engine setup
@@ -42,6 +43,9 @@ app.use('/welcome', welcomeRouter);
 app.use('/status', statusRouter);
 app.use('/status/register', statusRouter);
 app.use('/status/update', statusRouter);
+app.use('/plot', plotRouter);
+app.use('/gateway', gatewayRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

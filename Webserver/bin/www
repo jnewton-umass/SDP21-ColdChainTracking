@@ -23,7 +23,7 @@ var serverTCP = net.createServer();
 /**
  * Listen on provided port, on all network interfaces.
  */
-
+ 
 serverHTTP.listen(portHTTP);
 serverHTTP.on('error', onError);
 serverHTTP.on('listening', onListening);
@@ -33,19 +33,12 @@ serverTCP.on('connection', function(socket) {
   socket.on('data', async function(data) {
     data = data.toString();
     var newData = data.split(" ", 6);
-    await statusServices.registerStatus(newData[0], parseInt(newData[1]), parseInt(newData[2]), parseInt(newData[3]), parseFloat(newData[4]), parseFloat(newData[5]))
+    await statusServices.updateStatus(newData[0], parseInt(newData[1]), parseInt(newData[2]), parseInt(newData[3]), parseFloat(newData[4]), parseFloat(newData[5]))
       .then(result => {
         socket.write(result.toString());
       })
       .catch(error => {
         console.log(error.toString());
-        statusServices.updateStatus(newData[0], parseInt(newData[1]), parseInt(newData[2]), parseInt(newData[3]), parseFloat(newData[4]), parseFloat(newData[5]))
-          .then(result => {
-            socket.write(result.toString());
-          })
-          .catch(error => {
-            socket.write(error.toString());
-          })
       })
   });
   socket.on('end', function() {
