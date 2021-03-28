@@ -2,33 +2,17 @@ const gatewayInSchema = require("../models/inTransitModel")
 const gatewayOutSchema = require("../models/deliveredModel")
 
 async function startTransit(query) {
-    return new Promise(async function (resolve, reject) {
-        await gatewayInSchema.create(query)
-            .then(result => {
-                resolve(result)
-            })
-            .catch(error => {
-                reject(error)
-            })
-    })
+    console.log(query)
 }
 
 async function endTransit(query) {
-    return new Promise(async function (resolve, reject) {
-        await gatewayInSchema.deleteOne(query)
-            .then(result => {
-                resolve(result)
-            })
-            .catch(error => {
-                reject(error)
-            })
-        await gatewayOutSchema.create(query)
-            .then(result => {
-                resolve(result)
-            })
-            .catch(error => {
-                reject(error)
-            })
+    await gatewayOutSchema.insertMany(query[deliveredTime] = new Date.UTC())
+    .then(result => {
+        console.log(result)
+    })
+    await gatewayInSchema.deleteMany(query.gatewayId)
+    .then (result => {
+        console.log(result)
     })
 }
 module.exports = {startTransit, endTransit,}

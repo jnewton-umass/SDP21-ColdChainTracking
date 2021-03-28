@@ -6,7 +6,8 @@ const gatewayInSchema = new Schema ({
     products: {type: Object},
     fiftyPlus: {Number},
     sixtyPlus: {Number},
-    sevtyPlus: {Number}
+    sevtyPlus: {Number},
+    deliveredTime: {Date}
 })
 
 gatewayInSchema.index({"__id": 1 })

@@ -2,28 +2,46 @@ var express = require('express');
 var router = express.Router();
 var constants = require('../constants/constants')
 var gatewayServices = require('../services/gateWayServices')
+var inTransitModels = require('../models/inTransitModel')
+var deliveredModels = require('../models/deliveredModel')
+
 router.post('/start', async function(req, res, next) {
-    await gatewayServices.registerGateway(req.body)
-        .then(result  => {
-            res.status(constants.ERROR_CODES.SUCCESS);
-            res.send("Gateway Registered Successfully")
-        })
-        .catch(error => {
-            res.status(constants.ERROR_CODES.FAILED);
-            res.send(error);
+    return new Promise(async function (resolve, reject){
+        await gatewayServices.registerGateway(req.body)
+            .then(result  => {
+                console.log(result);
+                res.status(constants.ERROR_CODES.SUCCESS);
+                res.send("Gateway Registered Successfully");
+                return reject(result);
+            })
+            .catch(error => {
+                console.log(error);
+                res.status(constants.ERROR_CODES.FAILED);
+                res.send(error);
+            })
         })
 })
 
 router.post('/end', async function(req, res, next){
-    await gatewayServices.endTransit(req.body)
-        .then(result  => {
-            res.status(constants.ERROR_CODES.SUCCESS);
-            res.send("Gateway Ended Transit Successfully")
+    const query = {
+        gatewayId: req.body.gatewayId
+    }
+    const newQuery = {
+        gatewayId: req.body.gatewayId,
+        deliveredTime: new Date()
+    }
+    inTransitModels.find(query, async function (err, records){
+        await deliveredModels.insertMany(records)
+        .then(async result1 => {
+            console.log(result1)
+            await inTransitModels.deleteMany(query)
+            .then (result2 => {
+                console.log(result2)
+                res.status(constants.ERROR_CODES.SUCCESS);
+                res.send("Gateway Deleted inTransit Successfully")
+            })
         })
-        .catch(error => {
-            res.status(constants.ERROR_CODES.FAILED);
-            res.send(error);
-        })
+    })
 })
 
 module.exports = router;
