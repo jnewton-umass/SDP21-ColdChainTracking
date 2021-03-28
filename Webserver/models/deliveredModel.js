@@ -2,8 +2,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const gatewayOutSchema = new Schema ({
-    statusId: {type: String},
-    products: {type: Object}
+    gatewayId: {type: String},
+    products: {type: Object},
+    fiftyPlus: {Number},
+    sixtyPlus: {Number},
+    sevtyPlus: {Number},
+    deliveredTime: {Date}
 })
 
 gatewayOutSchema.index({"__id": 1 })

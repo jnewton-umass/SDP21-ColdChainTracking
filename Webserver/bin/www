@@ -30,11 +30,23 @@ serverHTTP.on('listening', onListening);
 serverTCP.listen(portTCP);
 serverTCP.on('connection', function(socket) {
   console.log('A new connection has been established.');
+  var countToHour = new Date();
+  let d = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 18, 35, 0);
   socket.on('data', async function(data) {
     data = data.toString();
-    var newData = data.split(" ", 6);
-    await statusServices.updateStatus(newData[0], parseInt(newData[1]), parseInt(newData[2]), parseInt(newData[3]), parseFloat(newData[4]), parseFloat(newData[5]))
+    var newData = data.split(" ", 7);
+    var curDate = new Date(parseInt(newData[6]))
+    await statusServices.updateStatus(newData[0], parseFloat(newData[1]), parseFloat(newData[2]), parseInt(newData[3]), parseFloat(newData[4]), parseFloat(newData[5]), curDate)
       .then(result => {
+        /*if ((parseFloat(newData[1] + parseFloat(newData[2]))/2 >= 50.0)){
+
+        }
+        else if ((parseFloat(newData[1] + parseFloat(newData[2]))/2 >= 60.0)){
+
+        }
+        else if ((parseFloat(newData[1] + parseFloat(newData[2]))/2 >= 70.0)){
+
+        }*/
         socket.write(result.toString());
       })
       .catch(error => {

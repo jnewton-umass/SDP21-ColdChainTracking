@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const statusSchema = new Schema ({
-    statusId: {type: String},
-    temperature1: {type: Number},    
-    temperature2: {type: Number},
+    gatewayId: {type: String},
+    tempCeil: {type: Number},    
+    tempSide: {type: Number},
     light: {type: Boolean},
     latitude: {type: Number},
     longitude: {type: Number},

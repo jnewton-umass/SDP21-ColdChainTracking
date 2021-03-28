@@ -2,9 +2,11 @@ const gatewayDao = require('../dataOps/gatewayDataOps')
 
 async function registerGateway(req) {
     const query = {
-        statusId: req.statusId,
+        gatewayId: req.gatewayId,
         products: req.products,
-        isDelivered: req.isDelivered
+        fiftyPlus: 0,
+        sixtyPlus: 0,
+        sevtyPlus: 0
     }
     await gatewayDao.startTransit(query)
         .then(result => {
@@ -16,9 +18,12 @@ async function registerGateway(req) {
 }
 async function endTransit(req) {
     const query = {
-        statusId: req.statusId,
+        gatewayId: req.gatewayId,
         products: req.products,
-        isDelivered: req.isDelivered
+        fiftyPlus: req.fiftyPlus,
+        sixtyPlus: req.sixtyPlus,
+        sevtyPlus: req.sevtyPlus,
+        deliveredTime: new Date()
     }
     await gatewayDao.endTransit(query)
         .then(result => {

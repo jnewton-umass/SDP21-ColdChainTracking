@@ -3,22 +3,22 @@ const statusDao = require('../dataOps/statusDataOps')
 
 const errorObj = {}
 
-async function registerStatus(id, temp1, temp2, light, lat, lon) {
+async function registerStatus(id, temp1, temp2, light, lat, lon, date) {
     const query = {
-        statusId: id,
-        temperature1: temp1,
-        temperature2: temp2,
+        gatewayId: id,
+        tempCeil: temp1,
+        tempSide: temp2,
         light: light,
         latitude: lat,
         longitude: lon,
-        updatedAt:  new Date()
+        updatedAt:  date
     }
-    const statusIdObj  = {
-        statusId: id
+    const gatewayIdObj  = {
+        gatewayId: id
     }
 
     return new Promise(async function (resolve, reject) {
-        await statusDao.checkStatusIdExists(statusIdObj)
+        await statusDao.checkgatewayIdExists(gatewayIdObj)
             .then(async result => {
                 if (result.length !== 0) {
                     return  resolve(statusDao.update(query))
@@ -33,22 +33,22 @@ async function registerStatus(id, temp1, temp2, light, lat, lon) {
             })
     })
 }
-async function updateStatus(id, temp1, temp2, light, lat, lon) {
+async function updateStatus(id, temp1, temp2, light, lat, lon, date) {
     const query = {
-        statusId: id,
-        temperature1: temp1,
-        temperature2: temp2,
+        gatewayId: id,
+        tempCeil: temp1,
+        tempSide: temp2,
         light: light,
         latitude: lat,
         longitude: lon,
-        updatedAt:  new Date()
+        updatedAt: date
     }
-    const statusIdObj  = {
-        statusId: id
+    const gatewayIdObj  = {
+        gatewayId: id
     }
 
     return new Promise(async function (resolve, reject) {
-        await statusDao.checkStatusIdExists(statusIdObj)
+        await statusDao.checkgatewayIdExists(gatewayIdObj)
             .then(async result => {
                 if (result.length !== 0) {
                     return resolve(statusDao.update(query))
