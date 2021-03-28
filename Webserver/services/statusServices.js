@@ -52,7 +52,7 @@ async function updateStatus(id, temp1, temp2, light, lat, lon, date) {
     return new Promise(async function (resolve, reject) {
         await inTransitModels.findOne(gatewayIdObj)
             .then(async result => {
-                if ((50.0 <= temp1 + temp2)/2.0 < 60.0) {
+                /*if ((50.0 <= temp1 + temp2)/2.0 < 60.0) {
                     result.update({
                         gatewayId: result.gatewayId,
                         products: result.products,
@@ -81,7 +81,7 @@ async function updateStatus(id, temp1, temp2, light, lat, lon, date) {
                         sevtyPlus: result.sevtyPlus + 1,
                         deliveredTime: date
                     })
-                }
+                }*/
                 console.log(result)
                 if (result.length !== 0) {
                     return resolve(statusDao.update(query))

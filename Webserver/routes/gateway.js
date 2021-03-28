@@ -12,12 +12,13 @@ router.post('/start', async function(req, res, next) {
                 console.log(result);
                 res.status(constants.ERROR_CODES.SUCCESS);
                 res.send("Gateway Registered Successfully");
-                return reject(result);
+                return resolve(result);
             })
             .catch(error => {
                 console.log(error);
                 res.status(constants.ERROR_CODES.FAILED);
                 res.send(error);
+                return reject(error);
             })
         })
 })

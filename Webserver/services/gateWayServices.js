@@ -1,18 +1,18 @@
 const gatewayDao = require('../dataOps/gatewayDataOps')
-const gatewayInModel = require('../models/inTransitModel')
-async function registerGateway(req) {
+const inTransitModel = require('../models/inTransitModel')
+function registerGateway(req) {
     return new Promise(async function (resolve, reject){
-        let query = {
+        const query = new inTransitModel({
             gatewayId: req.gatewayId,
             products: req.products,
-            fiftyPlus: req.fiftyPlus,
-            sixtyPlus: req.sixtyPlus,
-            sevtyPlus: req.sevtyPlus,
+            fiftyPlus: 0,
+            sixtyPlus: 0,
+            sevtyPlus: 0,
             deliveredTime: new Date()
-        }
-        await gatewayInModel.create(query)
+        })
+        console.log(query)
+        await inTransitModel.create(query)
             .then(result => {
-                console.log(result)
                 return resolve(result)
             })
             .catch(error => {
