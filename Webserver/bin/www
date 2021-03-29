@@ -31,8 +31,8 @@ serverTCP.listen(portTCP);
 serverTCP.on('connection', function(socket) {
   console.log('A new connection has been established.');
   socket.on('data', async function(data) {
-    console.log(data)
     data = data.toString();
+    console.log(data);
     var newData = data.split(" ", 7);
     var curDate = new Date(parseInt(newData[6]))
     await statusServices.updateStatus(newData[0], parseFloat(newData[1]), parseFloat(newData[2]), parseInt(newData[3]), parseFloat(newData[4]), parseFloat(newData[5]), curDate)
