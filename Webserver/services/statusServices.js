@@ -46,7 +46,7 @@ async function updateStatus(id, temp1, temp2, light, lat, lon, date) {
     const gatewayIdObj  = {
         gatewayId: id
     }
-    if ((50.0 <= temp1 + temp2)/2.0 < 60.0) {
+    /*if ((50.0 <= temp1 + temp2)/2.0 < 60.0) {
         const update = {
             gatewayId: result.gatewayId,
             products: result.products,
@@ -75,7 +75,7 @@ async function updateStatus(id, temp1, temp2, light, lat, lon, date) {
             sevtyPlus: result.sevtyPlus + 1,
             deliveredTime: date
         }
-    }
+    }*/
     return new Promise(async function (resolve, reject) {
         await (await inTransitModels.findOne(gatewayIdObj)).updateOne(update)
             .then(async result => {
