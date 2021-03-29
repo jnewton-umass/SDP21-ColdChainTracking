@@ -1,32 +1,15 @@
 extends layout
 block content
-    div(id='plot')
-    div(id='tempCeil')=tempCeil
-    br 
-    p #{logitude} #{latitude}
-    br
-    script.
-        function plotter() {
-            let plot = document.getElementById('plot')
-            
-            let data = [{
-                type: "scattermapbox",
-                mode: "markers"
-                customdata: tempCeil,
-                customdata: tempSide,
-                lon: longitude,
-                lat: latitude,
-                hoverinfo: "all",
-                marker: { cmin: 32, cmax: 100, size: 4, colorscale: 'Rdbu'}
-            }];  
-            
-            let layout = {
-                coloraxis: {colorscale: "Rdbu"}, 
-                title: {text: "Temperature Points in Transportation"}
-                dragmode: "zoom",
-                mapbox: { style: "open-street-map", center: { lat: 38, lon: -90 }, zoom: 3 },
-                margin: { r: 0, t: 0, b: 0, l: 0 }
-            };
-            Plotly.newPlot(plot, data, layout);
-        }
-        plotter();
+    table(class='content')
+        tr
+            th Selected Gateway ID
+            th(class='low') <b>Low Risk</b> Temperatures Recorded 
+            th(class='mid') <b>Mid Risk</b> Temperatures Recorded 
+            th(class='high') <b>High Risk</b> Temperatures Recorded 
+            th Start Time of Transportation
+        tr
+            th #{gatewayId}
+            th(class='low') #{fiftyPlus}
+            th(class='mid') #{seventyPlus} 
+            th(class='high') #{eightyPlus}
+            th #{startTime}
