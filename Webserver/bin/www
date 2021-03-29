@@ -31,6 +31,7 @@ serverTCP.listen(portTCP);
 serverTCP.on('connection', function(socket) {
   console.log('A new connection has been established.');
   socket.on('data', async function(data) {
+    console.log(data)
     data = data.toString();
     var newData = data.split(" ", 7);
     var curDate = new Date(parseInt(newData[6]))
