@@ -77,7 +77,7 @@ async function updateStatus(id, temp1, temp2, light, lat, lon, date) {
         }
     }*/
     return new Promise(async function (resolve, reject) {
-        await (await inTransitModels.findOne(gatewayIdObj)).updateOne(update)
+        await inTransitModels.findOne(gatewayIdObj)
             .then(async result => {
                 console.log(result)
                 if (result.length !== 0) {
