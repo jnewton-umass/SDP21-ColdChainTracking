@@ -5,10 +5,19 @@ block content
         function plotter(dataIn) {
             plot = document.getElementById('plot');
             var data = [{
-                x: [1,2,3,4,5,6,7,8,9,10],
-                y: [1,2,3,4,5,6,7,8,9,10]
+                type: "scattermapbox",
+				customdata: "#{temp1}",
+                customdata: "#{temp2}",
+				lon: "#{lon}",
+				lat: "#{lat}",
+                hoverinfo: "all",
+				marker: { cmin: 32, cmax: 100, size: 4, colorscale: 'Rdbu'}
             }];  
             var layout = {
+                coloraxis: {colorscale: ""}, 
+                title: {text: "Temperature Points in Transportation"}
+                dragmode: "zoom",
+                mapbox: { style: "open-street-map", center: { lat: 38, lon: -90 }, zoom: 3 },
                 margin: { r: 0, t: 0, b: 0, l: 0 }
             };
             Plotly.newPlot(plot, data, layout);

@@ -1,6 +1,6 @@
 var net = require('net');
 var client = new net.Socket()
-const mes = 'NEW 63.6 64.2 0 42.374376 -72.519899 628021800000'
+const mes = 'heyo 63.6 64.2 0 42.374376 -72.519899 628021800000'
 client.connect(8081, 'localhost', function() {
 	console.log('Connected');
 	client.write(mes);

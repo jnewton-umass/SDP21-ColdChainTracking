@@ -20,7 +20,7 @@ router.post('/', async function(req, res, next) {
         console.log(temp2);
         console.log(lat);
         console.log(lon);
-        res.render('plot');
+        res.render('plot', {temp1, temp2, lat, lon});
     });
 });
 
