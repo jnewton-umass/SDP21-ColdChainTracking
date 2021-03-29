@@ -4,10 +4,11 @@ const Schema = mongoose.Schema;
 const gatewayOutSchema = new Schema ({
     gatewayId: {type: String},
     products: {type: Object},
-    fiftyPlus: {Number},
-    sixtyPlus: {Number},
-    sevtyPlus: {Number},
-    deliveredTime: {Date}
+    fiftyPlus: {type: Number},
+    seventyPlus: {type: Number},
+    eightyPlus: {type: Number},
+    startTime: {type: Date},
+    deliveredTime: {type: Date}
 })
 
 gatewayOutSchema.index({"__id": 1 })

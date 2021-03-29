@@ -1,19 +1,26 @@
 extends layout
 block content
     div(id='plot')
+    div(id='tempCeil')=tempCeil
+    br 
+    p #{logitude} #{latitude}
+    br
     script.
-        function plotter(dataIn) {
-            plot = document.getElementById('plot');
-            var data = [{
+        function plotter() {
+            let plot = document.getElementById('plot')
+            
+            let data = [{
                 type: "scattermapbox",
-				customdata: "#{temp1}",
-                customdata: "#{temp2}",
-				lon: "#{lon}",
-				lat: "#{lat}",
+                mode: "markers"
+                customdata: tempCeil,
+                customdata: tempSide,
+                lon: longitude,
+                lat: latitude,
                 hoverinfo: "all",
-				marker: { cmin: 32, cmax: 100, size: 4, colorscale: 'Rdbu'}
+                marker: { cmin: 32, cmax: 100, size: 4, colorscale: 'Rdbu'}
             }];  
-            var layout = {
+            
+            let layout = {
                 coloraxis: {colorscale: "Rdbu"}, 
                 title: {text: "Temperature Points in Transportation"}
                 dragmode: "zoom",

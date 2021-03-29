@@ -6,7 +6,7 @@ async function startTransit(query) {
 }
 
 async function endTransit(query) {
-    await gatewayOutSchema.insertMany(query[deliveredTime] = new Date.UTC())
+    await gatewayOutSchema.insertMany(query)
     .then(result => {
         console.log(result)
     })
