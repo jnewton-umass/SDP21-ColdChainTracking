@@ -10,7 +10,7 @@ router.post('/', async function(req, res, next) {
         await deliveredModel.findOne(filter).then(async result => {
             if (result == null){
                 await inTransitModel.findOne(filter).then(async result => {
-                    let longitude =  [];
+                    /*let longitude =  [];
                     let latitude = [];
                     let tempCeil = [];
                     let tempSide = [];
@@ -40,10 +40,8 @@ router.post('/', async function(req, res, next) {
                             family: 'Droid Serif, serif',
                             size: 6
                         }
-                    };
+                    };*/
                     return resolve(res.render('plot', {gatewayId: req.body.gatewayId, fiftyPlus: result.fiftyPlus, seventyPlus: result.seventyPlus, eightyPlus: result.eightyPlus, startTime: result.startTime}, function (err, html) {
-                        let plot = html.getElementById('plot');
-                        Plotly.newPlot(plot, data, layout);
                         res.send(html);
                     }));
                 })
@@ -54,7 +52,7 @@ router.post('/', async function(req, res, next) {
             }
             else {
                 await inTransitModel.findOne(filter).then(async result => {
-                    let longitude =  [];
+                    /*let longitude =  [];
                     let latitude = [];
                     let tempCeil = [];
                     let tempSide = [];
@@ -87,7 +85,7 @@ router.post('/', async function(req, res, next) {
                             }
                         };
                         console.log(data);
-                    })
+                    })*/
                     return resolve(res.render('plot', {gatewayId: req.body.gatewayId, fiftyPlus: result.fiftyPlus, seventyPlus: result.seventyPlus, eightyPlus: result.eightyPlus, startTime: result.startTime}, function (err, html) {
                         console.log(html);
                         res.send(html);
