@@ -96,11 +96,7 @@ router.post('/', async function(req, res, next) {
                         console.log(err);
                     }))
             })
-        })
-        .catch(error => {
-            console.log(error)
-            return reject(error)
-        })
+        }})
     })
 })
 module.exports = router;
