@@ -41,9 +41,7 @@ router.post('/', async function(req, res, next) {
                             size: 6
                         }
                     };*/
-                    return resolve(res.render('plot', {gatewayId: req.body.gatewayId, fiftyPlus: result.fiftyPlus, seventyPlus: result.seventyPlus, eightyPlus: result.eightyPlus, startTime: result.startTime}, function (err, html) {
-                        res.send(html);
-                    }));
+                    return resolve(res.render('plot', {gatewayId: req.body.gatewayId, fiftyPlus: result.fiftyPlus, seventyPlus: result.seventyPlus, eightyPlus: result.eightyPlus, startTime: result.startTime}));
                 })
                 .catch(error => {
                     console.log(error)
