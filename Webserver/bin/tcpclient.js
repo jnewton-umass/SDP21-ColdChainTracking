@@ -7,7 +7,7 @@ client.connect(8081, 'localhost', function() {
 });
 let lat = 42.37;
 let lon = -72.52;
-let  time = 1618786333000;
+let  time = 1618786333;
 const numMsg = 250;
 function msgGenerator(index) {
 	var light;
