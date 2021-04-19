@@ -36,9 +36,6 @@ serverTCP.on('connection', function(socket) {
     var newData = data.split(" ", 7);
     var curDate = new Date(parseInt(newData[6]))
     await statusServices.updateStatus(newData[0], parseFloat(newData[1]), parseFloat(newData[2]), parseInt(newData[3]), parseFloat(newData[4]), parseFloat(newData[5]), curDate)
-      .then(result => {
-        socket.write(result.toString());
-      })
       .catch(error => {
         console.log(error.toString());
       })
