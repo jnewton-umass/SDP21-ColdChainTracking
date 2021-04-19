@@ -49,12 +49,6 @@ serverTCP.on('connection', function(socket) {
   socket.on('timeout', function() {
     console.log('Connection timed out.');
   });
-  socket.on('error', function(error) {
-    console.log('Socket had error: \t' + error);
-  });
-  socket.on('close', function() {
-    console.log('Connection was closed.')
-  });
 });
 serverTCP.on('listening', function() {
   var addr = serverTCP.address();
@@ -63,12 +57,6 @@ serverTCP.on('listening', function() {
     : 'port ' + addr.port;
   console.log('Listening for a TCP connection on ' + bind);
   debug('Listening on ' + bind);
-});
-serverTCP.on('close', function() {
-  console.log('Connection closed.');
-});
-serverTCP.on('error', function(error) {
-  console.log('There was an error with the connection.\n' + error);
 });
 /**
  * Normalize a port into a number, string, or false.

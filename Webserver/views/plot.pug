@@ -13,5 +13,14 @@ block content
             th(class='mid') #{seventyPlus} 
             th(class='high') #{eightyPlus}
             th #{startTime}
-    div(id='plot')
-    
+    div(id='geoplot')
+    br
+    div(id='lineplot')
+    br
+    div(id='avgTemp')=avgTemp
+    div(id='tempCeil')=tempCeil 
+    div(id='tempSide')=tempSide 
+    div(id='latitude')=latitude 
+    div(id='longitude')=longitude 
+    div(id='time')=time
+    script(src="../src/plot.js")

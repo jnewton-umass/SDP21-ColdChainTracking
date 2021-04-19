@@ -1,0 +1,25 @@
+#!/usr/bin/env node
+/**
+ * Module dependencies.
+ */
+var net = require('net');
+var portTCP = '8081';
+/**
+ * Create TCP server
+ */
+
+var serverTCP = net.createServer();
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+serverTCP.listen(portTCP);
+serverTCP.on('connection', function(socket) {
+  console.log('A new connection has been established.');
+  socket.on('data', function(data) {
+    //let jsonData = JSON.parse(data.toString());
+    console.log(data.toString());
+  })
+  socket.on('close', function(data) {
+    console.log('Connection was closed.');
+  })
+})
