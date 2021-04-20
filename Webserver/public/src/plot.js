@@ -48,8 +48,73 @@ var geolayout = {
 	coloraxis: {colorbar: {title: {text: 'Temperature (deg F)'},font:{family:'Arial', size: 30, color: 'black'}, side: "top"}}
 };
 Plotly.newPlot('geoplot', geodata, geolayout);
-
+var lowriskLine = [];
+var midriskLine = [];
+var highriskLine = [];
+var safeZone = [];
+time.forEach(function() {
+	safeZone.push(50);
+	lowriskLine.push(70);
+	midriskLine.push(80);
+	highriskLine.push(100);
+})
 var tempLineData = [
+	{
+		type: 'scatter',
+		mode: 'lines+markers',
+		name: 'Safe Zone',
+		x: time,
+		y: safeZone,
+		marker: {
+			size: 1,
+			color: 'black',
+			line: {width: 2}
+		},
+		fill: 'tozeroy',
+		fillcolor:'lightgreen'
+	},
+	{
+		type: 'scatter',
+		mode: 'lines+markers',
+		name: 'Low Danger Zone',
+		x: time,
+		y: lowriskLine,
+		marker: {
+			size: 1,
+			color: 'black',
+			line: {width: 2}
+		},
+		fill: 'tonexty',
+		fillcolor:'lightyellow'
+	},
+	{
+		type: 'scatter',
+		mode: 'lines+markers',
+		name: 'Mid Danger Zone',
+		x: time,
+		y: midriskLine,
+		marker: {
+			size: 1,
+			color: 'black',
+			line: {width: 2}
+		},
+		fill: 'tonexty',
+		fillcolor:'wheat'
+	},
+	{
+		type: 'scatter',
+		mode: 'lines+markers',
+		name: 'High Danger Zone',
+		x: time,
+		y: highriskLine,
+		marker: {
+			size: 1,
+			color: 'black',
+			line: {width: 2}
+		},
+		fill: 'tonexty',
+		fillcolor:'lightsalmon'
+	},
 	{
 		type: 'scatter',
 		mode: 'lines+markers',
